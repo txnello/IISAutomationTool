@@ -52,6 +52,7 @@ Partial Class IISAutomationTool
         ' 
         ' RefreshPool
         ' 
+        RefreshPool.Enabled = False
         RefreshPool.BackColor = SystemColors.ActiveCaptionText
         RefreshPool.ForeColor = SystemColors.ButtonFace
         RefreshPool.Location = New Point(12, 210)
@@ -69,12 +70,12 @@ Partial Class IISAutomationTool
         GetEnvironment.Name = "GetEnvironment"
         GetEnvironment.Size = New Size(153, 23)
         GetEnvironment.TabIndex = 2
+        GetEnvironment.Enabled = False
         ' 
         ' GetProject
         ' 
         GetProject.Enabled = False
         GetProject.FormattingEnabled = True
-        GetProject.Items.AddRange(New Object() {"Trunk", "11.11.05"})
         GetProject.Location = New Point(209, 80)
         GetProject.Name = "GetProject"
         GetProject.Size = New Size(153, 23)
@@ -86,6 +87,7 @@ Partial Class IISAutomationTool
         CRMPath.Name = "CRMPath"
         CRMPath.Size = New Size(153, 23)
         CRMPath.TabIndex = 4
+        CRMPath.Enabled = False
         ' 
         ' HDAPath
         ' 
@@ -93,6 +95,7 @@ Partial Class IISAutomationTool
         HDAPath.Name = "HDAPath"
         HDAPath.Size = New Size(153, 23)
         HDAPath.TabIndex = 5
+        HDAPath.Enabled = False
         ' 
         ' SetPath
         ' 
@@ -102,6 +105,7 @@ Partial Class IISAutomationTool
         SetPath.TabIndex = 6
         SetPath.Text = "Set path"
         SetPath.UseVisualStyleBackColor = True
+        SetPath.Enabled = False
         ' 
         ' CRMPathLabel
         ' 
@@ -156,6 +160,7 @@ Partial Class IISAutomationTool
         OpenPortalLogs.TabIndex = 12
         OpenPortalLogs.Text = "Open Portal Logs"
         OpenPortalLogs.UseVisualStyleBackColor = True
+        OpenPortalLogs.Enabled = False
         ' 
         ' OpenWSCLogs
         ' 
@@ -165,6 +170,7 @@ Partial Class IISAutomationTool
         OpenWSCLogs.TabIndex = 13
         OpenWSCLogs.Text = "Open WSC4 Logs"
         OpenWSCLogs.UseVisualStyleBackColor = True
+        OpenWSCLogs.Enabled = False
         ' 
         ' ErrorLabel
         ' 

@@ -1,6 +1,35 @@
 ﻿Imports System.IO
+Imports System.Net
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Newtonsoft.Json
 
 Public Class IISAutomationTool
+
+    Public Sub New()
+        InitializeComponent()
+
+        Dim request As HttpWebRequest
+        Dim response As HttpWebResponse = Nothing
+        Dim reader As StreamReader
+
+        request = DirectCast(WebRequest.Create("https://raw.githubusercontent.com/txnello/IISAutomationTool/refs/heads/master/IISAutomationToolSettings/_settings.json"), HttpWebRequest)
+
+        response = DirectCast(request.GetResponse(), HttpWebResponse)
+        reader = New StreamReader(response.GetResponseStream())
+
+        Dim rawresp As String
+        rawresp = reader.ReadToEnd()
+        Dim json = JsonConvert.DeserializeObject(rawresp)
+
+        If json("programAvailability") Then
+            GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.CRMPath.Count > 0
+            CRMPath.Enabled = True
+            HDAPath.Enabled = True
+            SetPath.Enabled = True
+            RefreshPool.Enabled = True
+        End If
+    End Sub
+
     Private Sub GetEnvironment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GetEnvironment.SelectedIndexChanged
         ' load CRM configuration
         Dim envPath As String = CRMPath.Text
@@ -83,6 +112,9 @@ Public Class IISAutomationTool
             ' save XML
             configuration.Save("C:\Windows\System32\inetsrv\config\applicationHost.config")
             ErrorLabel.Text = ""
+
+            OpenPortalLogs.Enabled = True
+            OpenWSCLogs.Enabled = True
         Catch ex As Exception
             ErrorLabel.Text = "Error saving configuration."
         End Try
