@@ -152,7 +152,7 @@ Partial Class IISAutomationTool
         Info.Name = "Info"
         Info.Size = New Size(184, 15)
         Info.TabIndex = 11
-        Info.Text = "Created by Manuel Tonello | v. 1.0"
+        Info.Text = "Created by Manuel Tonello | v. "
         ' 
         ' OpenPortalLogs
         ' 

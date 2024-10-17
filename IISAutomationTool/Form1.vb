@@ -5,23 +5,34 @@ Imports Newtonsoft.Json
 
 Public Class IISAutomationTool
 
+    Dim toolVersion As Integer
+
     Public Sub New()
         InitializeComponent()
 
-        Dim request As HttpWebRequest
-        Dim response As HttpWebResponse = Nothing
-        Dim reader As StreamReader
+        toolVersion = 1
+        Info.Text += "1.0"
 
-        request = DirectCast(WebRequest.Create("https://raw.githubusercontent.com/txnello/IISAutomationTool/refs/heads/master/IISAutomationToolSettings/_settings.json"), HttpWebRequest)
-
-        response = DirectCast(request.GetResponse(), HttpWebResponse)
-        reader = New StreamReader(response.GetResponseStream())
-
-        Dim rawresp As String
-        rawresp = reader.ReadToEnd()
-        Dim json = JsonConvert.DeserializeObject(rawresp)
+        Dim webClient As New System.Net.WebClient
+        Dim result As String = webClient.DownloadString("https://raw.githubusercontent.com/txnello/IISAutomationTool/refs/heads/master/IISAutomationToolSettings/_settings.json")
+        Dim json = JsonConvert.DeserializeObject(result)
 
         If json("programAvailability") Then
+            If json("updateVersion").value > toolVersion Then
+                If (MessageBox.Show("A new version (v" + json("updateExtendedVersion").ToString() + ") is now available. Do you want to download it?", "Visit", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) = DialogResult.Yes) Then
+                    Dim updateUrl As String = json("updateUrl").ToString()
+                    If Not updateUrl.StartsWith("http://") And Not updateUrl.StartsWith("https://") Then
+                        updateUrl = "https://" & updateUrl
+                    End If
+
+                    Dim psi As New ProcessStartInfo()
+                    psi.FileName = updateUrl
+                    psi.UseShellExecute = True
+
+                    Process.Start(psi)
+                End If
+            End If
+
             GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.CRMPath.Count > 0
             CRMPath.Enabled = True
             HDAPath.Enabled = True
