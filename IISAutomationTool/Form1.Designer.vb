@@ -37,6 +37,7 @@ Partial Class IISAutomationTool
         Info = New Label()
         OpenPortalLogs = New Button()
         OpenWSCLogs = New Button()
+        ErrorLabel = New Label()
         SuspendLayout()
         ' 
         ' UpdateConfiguration
@@ -53,7 +54,7 @@ Partial Class IISAutomationTool
         ' 
         RefreshPool.BackColor = SystemColors.ActiveCaptionText
         RefreshPool.ForeColor = SystemColors.ButtonFace
-        RefreshPool.Location = New Point(12, 193)
+        RefreshPool.Location = New Point(12, 210)
         RefreshPool.Name = "RefreshPool"
         RefreshPool.Size = New Size(350, 49)
         RefreshPool.TabIndex = 1
@@ -141,7 +142,7 @@ Partial Class IISAutomationTool
         ' Info
         ' 
         Info.AutoSize = True
-        Info.Location = New Point(100, 308)
+        Info.Location = New Point(100, 325)
         Info.Name = "Info"
         Info.Size = New Size(184, 15)
         Info.TabIndex = 11
@@ -149,7 +150,7 @@ Partial Class IISAutomationTool
         ' 
         ' OpenPortalLogs
         ' 
-        OpenPortalLogs.Location = New Point(12, 248)
+        OpenPortalLogs.Location = New Point(12, 265)
         OpenPortalLogs.Name = "OpenPortalLogs"
         OpenPortalLogs.Size = New Size(153, 49)
         OpenPortalLogs.TabIndex = 12
@@ -158,18 +159,28 @@ Partial Class IISAutomationTool
         ' 
         ' OpenWSCLogs
         ' 
-        OpenWSCLogs.Location = New Point(209, 248)
+        OpenWSCLogs.Location = New Point(209, 265)
         OpenWSCLogs.Name = "OpenWSCLogs"
         OpenWSCLogs.Size = New Size(153, 49)
         OpenWSCLogs.TabIndex = 13
         OpenWSCLogs.Text = "Open WSC4 Logs"
         OpenWSCLogs.UseVisualStyleBackColor = True
         ' 
+        ' ErrorLabel
+        ' 
+        ErrorLabel.AutoSize = True
+        ErrorLabel.ForeColor = Color.Red
+        ErrorLabel.Location = New Point(12, 182)
+        ErrorLabel.Name = "ErrorLabel"
+        ErrorLabel.Size = New Size(0, 15)
+        ErrorLabel.TabIndex = 14
+        ' 
         ' IISAutomationTool
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(380, 336)
+        ClientSize = New Size(380, 351)
+        Controls.Add(ErrorLabel)
         Controls.Add(OpenWSCLogs)
         Controls.Add(OpenPortalLogs)
         Controls.Add(Info)
@@ -205,5 +216,6 @@ Partial Class IISAutomationTool
     Friend WithEvents Info As Label
     Friend WithEvents OpenPortalLogs As Button
     Friend WithEvents OpenWSCLogs As Button
+    Friend WithEvents ErrorLabel As Label
 
 End Class

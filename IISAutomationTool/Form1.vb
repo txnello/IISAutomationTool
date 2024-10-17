@@ -58,33 +58,43 @@ Public Class IISAutomationTool
     End Function
 
     Private Sub UpdateConfiguration_Click(sender As Object, e As EventArgs) Handles UpdateConfiguration.Click
-        ' select environment path
-        Dim env = My.Settings.CRMPath
-        If GetEnvironment.Text = "HDA" Then
-            env = My.Settings.HDAPath
-        End If
+        Try
+            ' select environment path
+            Dim env = My.Settings.CRMPath
+            If GetEnvironment.Text = "HDA" Then
+                env = My.Settings.HDAPath
+            End If
 
-        ' select project path
-        Dim proj = GetProject.Text
-        If proj = "Trunk" Then
-            proj = "\" + proj + "11"
-        Else
-            proj = "\Tags_" + GetEnvironment.Text + "\" + proj
-        End If
+            ' select project path
+            Dim proj = GetProject.Text
+            If proj = "Trunk" Then
+                proj = "\" + proj + "11"
+            Else
+                proj = "\Tags_" + GetEnvironment.Text + "\" + proj
+            End If
 
-        ' read XML
-        Dim configuration = XDocument.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
+            ' read XML
+            Dim configuration = XDocument.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
 
-        ' edit Portal and WSC4 configurations
-        configuration = UpdateXML(configuration, env, proj, "portal")
-        configuration = UpdateXML(configuration, env, proj, "wsc4")
+            ' edit Portal and WSC4 configurations
+            configuration = UpdateXML(configuration, env, proj, "portal")
+            configuration = UpdateXML(configuration, env, proj, "wsc4")
 
-        ' save XML
-        configuration.Save("C:\Windows\System32\inetsrv\config\applicationHost.config")
+            ' save XML
+            configuration.Save("C:\Windows\System32\inetsrv\config\applicationHost.config")
+            ErrorLabel.Text = ""
+        Catch ex As Exception
+            ErrorLabel.Text = "Error saving configuration."
+        End Try
     End Sub
 
     Private Sub RefreshPool_Click(sender As Object, e As EventArgs) Handles RefreshPool.Click
-        System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() & "\..\..\..\refreshPool.bat")
+        Try
+            System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() & "\..\..\..\refreshPool.bat")
+            ErrorLabel.Text = ""
+        Catch ex As Exception
+            ErrorLabel.Text = "Cannot find batch file."
+        End Try
     End Sub
 
     Private Sub SetPath_Click(sender As Object, e As EventArgs) Handles SetPath.Click
@@ -94,14 +104,27 @@ Public Class IISAutomationTool
             My.Settings.Save()
 
             GetEnvironment.Enabled = True
+            ErrorLabel.Text = ""
+        Else
+            ErrorLabel.Text = "Insert correct paths."
         End If
     End Sub
 
     Private Sub OpenPortalLogs_Click(sender As Object, e As EventArgs) Handles OpenPortalLogs.Click
-        Shell("explorer " + My.Settings.PortalPath + "\Logs", AppWinStyle.NormalFocus)
+        Try
+            Shell("explorer " + My.Settings.PortalPath + "\Logs", AppWinStyle.NormalFocus)
+            ErrorLabel.Text = ""
+        Catch ex As Exception
+            ErrorLabel.Text = "Cannot open Portal logs for some reasons. Try later or pray your own god."
+        End Try
     End Sub
 
     Private Sub OpenWSCLogs_Click(sender As Object, e As EventArgs) Handles OpenWSCLogs.Click
-        Shell("explorer " + My.Settings.WSC4Path + "\Logs", AppWinStyle.NormalFocus)
+        Try
+            Shell("explorer " + My.Settings.WSC4Path + "\Logs", AppWinStyle.NormalFocus)
+            ErrorLabel.Text = ""
+        Catch ex As Exception
+            ErrorLabel.Text = "Cannot open WSC4 logs for some reasons. Try later or pray your own god."
+        End Try
     End Sub
 End Class
