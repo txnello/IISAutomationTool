@@ -88,6 +88,7 @@ Partial Class IISAutomationTool
         CRMPath.Size = New Size(153, 23)
         CRMPath.TabIndex = 4
         CRMPath.Enabled = False
+        CRMPath.Text = If(My.Settings.CRMPath, "")
         ' 
         ' HDAPath
         ' 
@@ -96,6 +97,7 @@ Partial Class IISAutomationTool
         HDAPath.Size = New Size(153, 23)
         HDAPath.TabIndex = 5
         HDAPath.Enabled = False
+        HDAPath.Text = If(My.Settings.HDAPath, "")
         ' 
         ' SetPath
         ' 
