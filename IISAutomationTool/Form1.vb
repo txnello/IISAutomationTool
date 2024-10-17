@@ -34,11 +34,13 @@ Public Class IISAutomationTool
         ' load Portal configuration
         Dim tagName As String = "/PortalAuto"
         Dim suffix As String = "\PAT.CRM.Portal\PAT.CRM.Portal"
+        My.Settings.PortalPath = env + proj + suffix
 
         ' change if WSC4 is selected
         If application = "wsc4" Then
             tagName = "/WSC4Auto"
             suffix = "\PAT.CRM.WSC4\PAT.CRM.WSC4"
+            My.Settings.WSC4Path = env + proj + suffix
         End If
 
         ' edit XML file
@@ -57,13 +59,13 @@ Public Class IISAutomationTool
 
     Private Sub UpdateConfiguration_Click(sender As Object, e As EventArgs) Handles UpdateConfiguration.Click
         ' select environment path
-        Dim env As String = My.Settings.CRMPath
+        Dim env = My.Settings.CRMPath
         If GetEnvironment.Text = "HDA" Then
             env = My.Settings.HDAPath
         End If
 
         ' select project path
-        Dim proj As String = GetProject.Text
+        Dim proj = GetProject.Text
         If proj = "Trunk" Then
             proj = "\" + proj + "11"
         Else
@@ -71,7 +73,7 @@ Public Class IISAutomationTool
         End If
 
         ' read XML
-        Dim configuration As XDocument = XDocument.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
+        Dim configuration = XDocument.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
 
         ' edit Portal and WSC4 configurations
         configuration = UpdateXML(configuration, env, proj, "portal")
@@ -86,12 +88,20 @@ Public Class IISAutomationTool
     End Sub
 
     Private Sub SetPath_Click(sender As Object, e As EventArgs) Handles SetPath.Click
-        If (CRMPath.Text.Count > 0 AndAlso HDAPath.Text.Count > 0) Then
+        If CRMPath.Text.Count > 0 AndAlso HDAPath.Text.Count > 0 Then
             My.Settings.CRMPath = CRMPath.Text
             My.Settings.HDAPath = HDAPath.Text
             My.Settings.Save()
 
             GetEnvironment.Enabled = True
         End If
+    End Sub
+
+    Private Sub OpenPortalLogs_Click(sender As Object, e As EventArgs) Handles OpenPortalLogs.Click
+        Shell("explorer " + My.Settings.PortalPath + "\Logs", AppWinStyle.NormalFocus)
+    End Sub
+
+    Private Sub OpenWSCLogs_Click(sender As Object, e As EventArgs) Handles OpenWSCLogs.Click
+        Shell("explorer " + My.Settings.WSC4Path + "\Logs", AppWinStyle.NormalFocus)
     End Sub
 End Class

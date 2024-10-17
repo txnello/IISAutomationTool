@@ -22,6 +22,7 @@ Partial Class IISAutomationTool
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(IISAutomationTool))
         UpdateConfiguration = New Button()
         RefreshPool = New Button()
         GetEnvironment = New ComboBox()
@@ -33,6 +34,9 @@ Partial Class IISAutomationTool
         HDAPathLabel = New Label()
         Environment = New Label()
         Project = New Label()
+        Info = New Label()
+        OpenPortalLogs = New Button()
+        OpenWSCLogs = New Button()
         SuspendLayout()
         ' 
         ' UpdateConfiguration
@@ -47,7 +51,8 @@ Partial Class IISAutomationTool
         ' 
         ' RefreshPool
         ' 
-        RefreshPool.BackColor = SystemColors.ActiveCaption
+        RefreshPool.BackColor = SystemColors.ActiveCaptionText
+        RefreshPool.ForeColor = SystemColors.ButtonFace
         RefreshPool.Location = New Point(12, 193)
         RefreshPool.Name = "RefreshPool"
         RefreshPool.Size = New Size(350, 49)
@@ -57,7 +62,6 @@ Partial Class IISAutomationTool
         ' 
         ' GetEnvironment
         ' 
-        GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.HDAPath.Count > 0
         GetEnvironment.FormattingEnabled = True
         GetEnvironment.Items.AddRange(New Object() {"ICRM", "HDA"})
         GetEnvironment.Location = New Point(209, 27)
@@ -81,7 +85,6 @@ Partial Class IISAutomationTool
         CRMPath.Name = "CRMPath"
         CRMPath.Size = New Size(153, 23)
         CRMPath.TabIndex = 4
-        CRMPath.Text = My.Settings.CRMPath
         ' 
         ' HDAPath
         ' 
@@ -89,7 +92,6 @@ Partial Class IISAutomationTool
         HDAPath.Name = "HDAPath"
         HDAPath.Size = New Size(153, 23)
         HDAPath.TabIndex = 5
-        HDAPath.Text = My.Settings.HDAPath
         ' 
         ' SetPath
         ' 
@@ -136,11 +138,41 @@ Partial Class IISAutomationTool
         Project.TabIndex = 10
         Project.Text = "Project"
         ' 
+        ' Info
+        ' 
+        Info.AutoSize = True
+        Info.Location = New Point(100, 308)
+        Info.Name = "Info"
+        Info.Size = New Size(184, 15)
+        Info.TabIndex = 11
+        Info.Text = "Created by Manuel Tonello | v. 1.0"
+        ' 
+        ' OpenPortalLogs
+        ' 
+        OpenPortalLogs.Location = New Point(12, 248)
+        OpenPortalLogs.Name = "OpenPortalLogs"
+        OpenPortalLogs.Size = New Size(153, 49)
+        OpenPortalLogs.TabIndex = 12
+        OpenPortalLogs.Text = "Open Portal Logs"
+        OpenPortalLogs.UseVisualStyleBackColor = True
+        ' 
+        ' OpenWSCLogs
+        ' 
+        OpenWSCLogs.Location = New Point(209, 248)
+        OpenWSCLogs.Name = "OpenWSCLogs"
+        OpenWSCLogs.Size = New Size(153, 49)
+        OpenWSCLogs.TabIndex = 13
+        OpenWSCLogs.Text = "Open WSC4 Logs"
+        OpenWSCLogs.UseVisualStyleBackColor = True
+        ' 
         ' IISAutomationTool
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(374, 257)
+        ClientSize = New Size(380, 336)
+        Controls.Add(OpenWSCLogs)
+        Controls.Add(OpenPortalLogs)
+        Controls.Add(Info)
         Controls.Add(Project)
         Controls.Add(Environment)
         Controls.Add(HDAPathLabel)
@@ -152,6 +184,7 @@ Partial Class IISAutomationTool
         Controls.Add(GetEnvironment)
         Controls.Add(RefreshPool)
         Controls.Add(UpdateConfiguration)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "IISAutomationTool"
         Text = "IIS Automation Tool"
         ResumeLayout(False)
@@ -169,5 +202,8 @@ Partial Class IISAutomationTool
     Friend WithEvents HDAPathLabel As Label
     Friend WithEvents Environment As Label
     Friend WithEvents Project As Label
+    Friend WithEvents Info As Label
+    Friend WithEvents OpenPortalLogs As Button
+    Friend WithEvents OpenWSCLogs As Button
 
 End Class
