@@ -2,15 +2,19 @@
 
 Public Class IISAutomationTool
     Private Sub GetEnvironment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GetEnvironment.SelectedIndexChanged
+        ' load CRM configuration
         Dim envPath As String = CRMPath.Text
         GetProject.Items.Clear()
 
+        ' change if HDA is selected
         If GetEnvironment.Text = "HDA" Then
             envPath = HDAPath.Text
         End If
 
+        ' add Trunk as default
         GetProject.Items.Add("Trunk")
 
+        ' read project folders
         Dim path As String = envPath + "\Tags_" + GetEnvironment.Text
         If Directory.Exists(path) Then
             For Each Dir As String In Directory.GetDirectories(path)
@@ -18,6 +22,7 @@ Public Class IISAutomationTool
             Next
         End If
 
+        ' enable the other combo
         GetProject.Enabled = True
     End Sub
 
@@ -26,14 +31,17 @@ Public Class IISAutomationTool
     End Sub
 
     Private Function UpdateXML(configuration As XDocument, env As String, proj As String, application As String) As XDocument
+        ' load Portal configuration
         Dim tagName As String = "/PortalAuto"
         Dim suffix As String = "\PAT.CRM.Portal\PAT.CRM.Portal"
 
+        ' change if WSC4 is selected
         If application = "wsc4" Then
             tagName = "/WSC4Auto"
             suffix = "\PAT.CRM.WSC4\PAT.CRM.WSC4"
         End If
 
+        ' edit XML file
         Dim applicationElement As XElement = configuration.Descendants("application").
             Where(Function(ex) ex.Attribute("path")?.Value = tagName).FirstOrDefault()
 
@@ -48,11 +56,13 @@ Public Class IISAutomationTool
     End Function
 
     Private Sub UpdateConfiguration_Click(sender As Object, e As EventArgs) Handles UpdateConfiguration.Click
+        ' select environment path
         Dim env As String = My.Settings.CRMPath
         If GetEnvironment.Text = "HDA" Then
             env = My.Settings.HDAPath
         End If
 
+        ' select project path
         Dim proj As String = GetProject.Text
         If proj = "Trunk" Then
             proj = "\" + proj + "11"
@@ -60,11 +70,14 @@ Public Class IISAutomationTool
             proj = "\Tags_" + GetEnvironment.Text + "\" + proj
         End If
 
+        ' read XML
         Dim configuration As XDocument = XDocument.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
 
+        ' edit Portal and WSC4 configurations
         configuration = UpdateXML(configuration, env, proj, "portal")
         configuration = UpdateXML(configuration, env, proj, "wsc4")
 
+        ' save XML
         configuration.Save("C:\Windows\System32\inetsrv\config\applicationHost.config")
     End Sub
 
