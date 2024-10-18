@@ -43,151 +43,158 @@ Partial Class IISAutomationTool
         ' UpdateConfiguration
         ' 
         UpdateConfiguration.Enabled = False
-        UpdateConfiguration.Location = New Point(209, 121)
+        UpdateConfiguration.Location = New Point(239, 161)
+        UpdateConfiguration.Margin = New Padding(3, 4, 3, 4)
         UpdateConfiguration.Name = "UpdateConfiguration"
-        UpdateConfiguration.Size = New Size(153, 49)
+        UpdateConfiguration.Size = New Size(175, 65)
         UpdateConfiguration.TabIndex = 0
         UpdateConfiguration.Text = "Update Configuration"
         UpdateConfiguration.UseVisualStyleBackColor = True
         ' 
         ' RefreshPool
         ' 
-        RefreshPool.Enabled = False
         RefreshPool.BackColor = SystemColors.ActiveCaptionText
+        RefreshPool.Enabled = False
         RefreshPool.ForeColor = SystemColors.ButtonFace
-        RefreshPool.Location = New Point(12, 210)
+        RefreshPool.Location = New Point(14, 280)
+        RefreshPool.Margin = New Padding(3, 4, 3, 4)
         RefreshPool.Name = "RefreshPool"
-        RefreshPool.Size = New Size(350, 49)
+        RefreshPool.Size = New Size(400, 65)
         RefreshPool.TabIndex = 1
         RefreshPool.Text = "REFRESH POOL"
         RefreshPool.UseVisualStyleBackColor = False
         ' 
         ' GetEnvironment
         ' 
+        GetEnvironment.Enabled = False
         GetEnvironment.FormattingEnabled = True
         GetEnvironment.Items.AddRange(New Object() {"ICRM", "HDA"})
-        GetEnvironment.Location = New Point(209, 27)
+        GetEnvironment.Location = New Point(239, 36)
+        GetEnvironment.Margin = New Padding(3, 4, 3, 4)
         GetEnvironment.Name = "GetEnvironment"
-        GetEnvironment.Size = New Size(153, 23)
+        GetEnvironment.Size = New Size(174, 28)
         GetEnvironment.TabIndex = 2
-        GetEnvironment.Enabled = False
         ' 
         ' GetProject
         ' 
         GetProject.Enabled = False
         GetProject.FormattingEnabled = True
-        GetProject.Location = New Point(209, 80)
+        GetProject.Location = New Point(239, 107)
+        GetProject.Margin = New Padding(3, 4, 3, 4)
         GetProject.Name = "GetProject"
-        GetProject.Size = New Size(153, 23)
+        GetProject.Size = New Size(174, 28)
         GetProject.TabIndex = 3
         ' 
         ' CRMPath
         ' 
-        CRMPath.Location = New Point(12, 27)
-        CRMPath.Name = "CRMPath"
-        CRMPath.Size = New Size(153, 23)
-        CRMPath.TabIndex = 4
         CRMPath.Enabled = False
-        CRMPath.Text = If(My.Settings.CRMPath, "")
+        CRMPath.Location = New Point(14, 36)
+        CRMPath.Margin = New Padding(3, 4, 3, 4)
+        CRMPath.Name = "CRMPath"
+        CRMPath.Size = New Size(174, 27)
+        CRMPath.TabIndex = 4
         ' 
         ' HDAPath
         ' 
-        HDAPath.Location = New Point(12, 80)
-        HDAPath.Name = "HDAPath"
-        HDAPath.Size = New Size(153, 23)
-        HDAPath.TabIndex = 5
         HDAPath.Enabled = False
-        HDAPath.Text = If(My.Settings.HDAPath, "")
+        HDAPath.Location = New Point(14, 107)
+        HDAPath.Margin = New Padding(3, 4, 3, 4)
+        HDAPath.Name = "HDAPath"
+        HDAPath.Size = New Size(174, 27)
+        HDAPath.TabIndex = 5
         ' 
         ' SetPath
         ' 
-        SetPath.Location = New Point(12, 121)
+        SetPath.Enabled = False
+        SetPath.Location = New Point(14, 161)
+        SetPath.Margin = New Padding(3, 4, 3, 4)
         SetPath.Name = "SetPath"
-        SetPath.Size = New Size(153, 49)
+        SetPath.Size = New Size(175, 65)
         SetPath.TabIndex = 6
         SetPath.Text = "Set path"
         SetPath.UseVisualStyleBackColor = True
-        SetPath.Enabled = False
         ' 
         ' CRMPathLabel
         ' 
         CRMPathLabel.AutoSize = True
-        CRMPathLabel.Location = New Point(12, 9)
+        CRMPathLabel.Location = New Point(14, 12)
         CRMPathLabel.Name = "CRMPathLabel"
-        CRMPathLabel.Size = New Size(60, 15)
+        CRMPathLabel.Size = New Size(72, 20)
         CRMPathLabel.TabIndex = 7
         CRMPathLabel.Text = "CRM Path"
         ' 
         ' HDAPathLabel
         ' 
         HDAPathLabel.AutoSize = True
-        HDAPathLabel.Location = New Point(12, 62)
+        HDAPathLabel.Location = New Point(14, 83)
         HDAPathLabel.Name = "HDAPathLabel"
-        HDAPathLabel.Size = New Size(59, 15)
+        HDAPathLabel.Size = New Size(73, 20)
         HDAPathLabel.TabIndex = 8
         HDAPathLabel.Text = "HDA Path"
         ' 
         ' Environment
         ' 
         Environment.AutoSize = True
-        Environment.Location = New Point(209, 9)
+        Environment.Location = New Point(239, 12)
         Environment.Name = "Environment"
-        Environment.Size = New Size(75, 15)
+        Environment.Size = New Size(92, 20)
         Environment.TabIndex = 9
         Environment.Text = "Environment"
         ' 
         ' Project
         ' 
         Project.AutoSize = True
-        Project.Location = New Point(209, 62)
+        Project.Location = New Point(239, 83)
         Project.Name = "Project"
-        Project.Size = New Size(44, 15)
+        Project.Size = New Size(55, 20)
         Project.TabIndex = 10
         Project.Text = "Project"
         ' 
         ' Info
         ' 
         Info.AutoSize = True
-        Info.Location = New Point(100, 325)
+        Info.Location = New Point(114, 433)
         Info.Name = "Info"
-        Info.Size = New Size(184, 15)
+        Info.Size = New Size(213, 20)
         Info.TabIndex = 11
         Info.Text = "Created by Manuel Tonello | v. "
         ' 
         ' OpenPortalLogs
         ' 
-        OpenPortalLogs.Location = New Point(12, 265)
+        OpenPortalLogs.Enabled = False
+        OpenPortalLogs.Location = New Point(14, 353)
+        OpenPortalLogs.Margin = New Padding(3, 4, 3, 4)
         OpenPortalLogs.Name = "OpenPortalLogs"
-        OpenPortalLogs.Size = New Size(153, 49)
+        OpenPortalLogs.Size = New Size(175, 65)
         OpenPortalLogs.TabIndex = 12
         OpenPortalLogs.Text = "Open Portal Logs"
         OpenPortalLogs.UseVisualStyleBackColor = True
-        OpenPortalLogs.Enabled = False
         ' 
         ' OpenWSCLogs
         ' 
-        OpenWSCLogs.Location = New Point(209, 265)
+        OpenWSCLogs.Enabled = False
+        OpenWSCLogs.Location = New Point(239, 353)
+        OpenWSCLogs.Margin = New Padding(3, 4, 3, 4)
         OpenWSCLogs.Name = "OpenWSCLogs"
-        OpenWSCLogs.Size = New Size(153, 49)
+        OpenWSCLogs.Size = New Size(175, 65)
         OpenWSCLogs.TabIndex = 13
         OpenWSCLogs.Text = "Open WSC4 Logs"
         OpenWSCLogs.UseVisualStyleBackColor = True
-        OpenWSCLogs.Enabled = False
         ' 
         ' ErrorLabel
         ' 
         ErrorLabel.AutoSize = True
         ErrorLabel.ForeColor = Color.Red
-        ErrorLabel.Location = New Point(12, 182)
+        ErrorLabel.Location = New Point(14, 243)
         ErrorLabel.Name = "ErrorLabel"
-        ErrorLabel.Size = New Size(0, 15)
+        ErrorLabel.Size = New Size(0, 20)
         ErrorLabel.TabIndex = 14
         ' 
         ' IISAutomationTool
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(380, 351)
+        ClientSize = New Size(434, 468)
         Controls.Add(ErrorLabel)
         Controls.Add(OpenWSCLogs)
         Controls.Add(OpenPortalLogs)
@@ -204,6 +211,8 @@ Partial Class IISAutomationTool
         Controls.Add(RefreshPool)
         Controls.Add(UpdateConfiguration)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        Margin = New Padding(3, 4, 3, 4)
+        MaximizeBox = False
         Name = "IISAutomationTool"
         Text = "IIS Automation Tool"
         ResumeLayout(False)

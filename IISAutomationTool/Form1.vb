@@ -33,6 +33,10 @@ Public Class IISAutomationTool
             End If
 
             GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.CRMPath.Count > 0
+
+            CRMPath.Text = If(My.Settings.CRMPath, "")
+            HDAPath.Text = If(My.Settings.HDAPath, "")
+
             CRMPath.Enabled = True
             HDAPath.Enabled = True
             SetPath.Enabled = True
