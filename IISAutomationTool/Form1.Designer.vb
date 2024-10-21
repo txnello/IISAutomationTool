@@ -38,15 +38,19 @@ Partial Class IISAutomationTool
         OpenPortalLogs = New Button()
         OpenWSCLogs = New Button()
         ErrorLabel = New Label()
+        OpenWSC4ErrorLogTail = New Button()
+        OpenPortalErrorLogTail = New Button()
+        OpenWSC4 = New Button()
+        OpenPortal = New Button()
+        SeparatorLabel = New Label()
         SuspendLayout()
         ' 
         ' UpdateConfiguration
         ' 
         UpdateConfiguration.Enabled = False
-        UpdateConfiguration.Location = New Point(239, 161)
-        UpdateConfiguration.Margin = New Padding(3, 4, 3, 4)
+        UpdateConfiguration.Location = New Point(209, 121)
         UpdateConfiguration.Name = "UpdateConfiguration"
-        UpdateConfiguration.Size = New Size(175, 65)
+        UpdateConfiguration.Size = New Size(153, 49)
         UpdateConfiguration.TabIndex = 0
         UpdateConfiguration.Text = "Update Configuration"
         UpdateConfiguration.UseVisualStyleBackColor = True
@@ -56,10 +60,9 @@ Partial Class IISAutomationTool
         RefreshPool.BackColor = SystemColors.ActiveCaptionText
         RefreshPool.Enabled = False
         RefreshPool.ForeColor = SystemColors.ButtonFace
-        RefreshPool.Location = New Point(14, 280)
-        RefreshPool.Margin = New Padding(3, 4, 3, 4)
+        RefreshPool.Location = New Point(12, 210)
         RefreshPool.Name = "RefreshPool"
-        RefreshPool.Size = New Size(400, 65)
+        RefreshPool.Size = New Size(350, 49)
         RefreshPool.TabIndex = 1
         RefreshPool.Text = "REFRESH POOL"
         RefreshPool.UseVisualStyleBackColor = False
@@ -69,47 +72,42 @@ Partial Class IISAutomationTool
         GetEnvironment.Enabled = False
         GetEnvironment.FormattingEnabled = True
         GetEnvironment.Items.AddRange(New Object() {"ICRM", "HDA"})
-        GetEnvironment.Location = New Point(239, 36)
-        GetEnvironment.Margin = New Padding(3, 4, 3, 4)
+        GetEnvironment.Location = New Point(209, 27)
         GetEnvironment.Name = "GetEnvironment"
-        GetEnvironment.Size = New Size(174, 28)
+        GetEnvironment.Size = New Size(153, 23)
         GetEnvironment.TabIndex = 2
         ' 
         ' GetProject
         ' 
         GetProject.Enabled = False
         GetProject.FormattingEnabled = True
-        GetProject.Location = New Point(239, 107)
-        GetProject.Margin = New Padding(3, 4, 3, 4)
+        GetProject.Location = New Point(209, 80)
         GetProject.Name = "GetProject"
-        GetProject.Size = New Size(174, 28)
+        GetProject.Size = New Size(153, 23)
         GetProject.TabIndex = 3
         ' 
         ' CRMPath
         ' 
         CRMPath.Enabled = False
-        CRMPath.Location = New Point(14, 36)
-        CRMPath.Margin = New Padding(3, 4, 3, 4)
+        CRMPath.Location = New Point(12, 27)
         CRMPath.Name = "CRMPath"
-        CRMPath.Size = New Size(174, 27)
+        CRMPath.Size = New Size(153, 23)
         CRMPath.TabIndex = 4
         ' 
         ' HDAPath
         ' 
         HDAPath.Enabled = False
-        HDAPath.Location = New Point(14, 107)
-        HDAPath.Margin = New Padding(3, 4, 3, 4)
+        HDAPath.Location = New Point(12, 80)
         HDAPath.Name = "HDAPath"
-        HDAPath.Size = New Size(174, 27)
+        HDAPath.Size = New Size(153, 23)
         HDAPath.TabIndex = 5
         ' 
         ' SetPath
         ' 
         SetPath.Enabled = False
-        SetPath.Location = New Point(14, 161)
-        SetPath.Margin = New Padding(3, 4, 3, 4)
+        SetPath.Location = New Point(12, 121)
         SetPath.Name = "SetPath"
-        SetPath.Size = New Size(175, 65)
+        SetPath.Size = New Size(153, 49)
         SetPath.TabIndex = 6
         SetPath.Text = "Set path"
         SetPath.UseVisualStyleBackColor = True
@@ -117,55 +115,54 @@ Partial Class IISAutomationTool
         ' CRMPathLabel
         ' 
         CRMPathLabel.AutoSize = True
-        CRMPathLabel.Location = New Point(14, 12)
+        CRMPathLabel.Location = New Point(12, 9)
         CRMPathLabel.Name = "CRMPathLabel"
-        CRMPathLabel.Size = New Size(72, 20)
+        CRMPathLabel.Size = New Size(60, 15)
         CRMPathLabel.TabIndex = 7
         CRMPathLabel.Text = "CRM Path"
         ' 
         ' HDAPathLabel
         ' 
         HDAPathLabel.AutoSize = True
-        HDAPathLabel.Location = New Point(14, 83)
+        HDAPathLabel.Location = New Point(12, 62)
         HDAPathLabel.Name = "HDAPathLabel"
-        HDAPathLabel.Size = New Size(73, 20)
+        HDAPathLabel.Size = New Size(59, 15)
         HDAPathLabel.TabIndex = 8
         HDAPathLabel.Text = "HDA Path"
         ' 
         ' Environment
         ' 
         Environment.AutoSize = True
-        Environment.Location = New Point(239, 12)
+        Environment.Location = New Point(209, 9)
         Environment.Name = "Environment"
-        Environment.Size = New Size(92, 20)
+        Environment.Size = New Size(75, 15)
         Environment.TabIndex = 9
         Environment.Text = "Environment"
         ' 
         ' Project
         ' 
         Project.AutoSize = True
-        Project.Location = New Point(239, 83)
+        Project.Location = New Point(209, 62)
         Project.Name = "Project"
-        Project.Size = New Size(55, 20)
+        Project.Size = New Size(44, 15)
         Project.TabIndex = 10
         Project.Text = "Project"
         ' 
         ' Info
         ' 
         Info.AutoSize = True
-        Info.Location = New Point(114, 433)
+        Info.Location = New Point(103, 435)
         Info.Name = "Info"
-        Info.Size = New Size(213, 20)
+        Info.Size = New Size(169, 15)
         Info.TabIndex = 11
         Info.Text = "Created by Manuel Tonello | v. "
         ' 
         ' OpenPortalLogs
         ' 
         OpenPortalLogs.Enabled = False
-        OpenPortalLogs.Location = New Point(14, 353)
-        OpenPortalLogs.Margin = New Padding(3, 4, 3, 4)
+        OpenPortalLogs.Location = New Point(12, 265)
         OpenPortalLogs.Name = "OpenPortalLogs"
-        OpenPortalLogs.Size = New Size(175, 65)
+        OpenPortalLogs.Size = New Size(153, 49)
         OpenPortalLogs.TabIndex = 12
         OpenPortalLogs.Text = "Open Portal Logs"
         OpenPortalLogs.UseVisualStyleBackColor = True
@@ -173,28 +170,79 @@ Partial Class IISAutomationTool
         ' OpenWSCLogs
         ' 
         OpenWSCLogs.Enabled = False
-        OpenWSCLogs.Location = New Point(239, 353)
-        OpenWSCLogs.Margin = New Padding(3, 4, 3, 4)
+        OpenWSCLogs.Location = New Point(209, 265)
         OpenWSCLogs.Name = "OpenWSCLogs"
-        OpenWSCLogs.Size = New Size(175, 65)
+        OpenWSCLogs.Size = New Size(153, 49)
         OpenWSCLogs.TabIndex = 13
         OpenWSCLogs.Text = "Open WSC4 Logs"
         OpenWSCLogs.UseVisualStyleBackColor = True
         ' 
         ' ErrorLabel
         ' 
-        ErrorLabel.AutoSize = True
-        ErrorLabel.ForeColor = Color.Red
-        ErrorLabel.Location = New Point(14, 243)
+        ErrorLabel.Location = New Point(0, 0)
         ErrorLabel.Name = "ErrorLabel"
-        ErrorLabel.Size = New Size(0, 20)
-        ErrorLabel.TabIndex = 14
+        ErrorLabel.Size = New Size(100, 23)
+        ErrorLabel.TabIndex = 19
+        ' 
+        ' OpenWSC4ErrorLogTail
+        ' 
+        OpenWSC4ErrorLogTail.Enabled = False
+        OpenWSC4ErrorLogTail.Location = New Point(209, 320)
+        OpenWSC4ErrorLogTail.Name = "OpenWSC4ErrorLogTail"
+        OpenWSC4ErrorLogTail.Size = New Size(153, 49)
+        OpenWSC4ErrorLogTail.TabIndex = 16
+        OpenWSC4ErrorLogTail.Text = "Open WSC4 Error Log Tail"
+        OpenWSC4ErrorLogTail.UseVisualStyleBackColor = True
+        ' 
+        ' OpenPortalErrorLogTail
+        ' 
+        OpenPortalErrorLogTail.Enabled = False
+        OpenPortalErrorLogTail.Location = New Point(12, 320)
+        OpenPortalErrorLogTail.Name = "OpenPortalErrorLogTail"
+        OpenPortalErrorLogTail.Size = New Size(153, 49)
+        OpenPortalErrorLogTail.TabIndex = 15
+        OpenPortalErrorLogTail.Text = "Open Portal Error Log Tail"
+        OpenPortalErrorLogTail.UseVisualStyleBackColor = True
+        ' 
+        ' OpenWSC4
+        ' 
+        OpenWSC4.Enabled = False
+        OpenWSC4.Location = New Point(209, 375)
+        OpenWSC4.Name = "OpenWSC4"
+        OpenWSC4.Size = New Size(153, 49)
+        OpenWSC4.TabIndex = 18
+        OpenWSC4.Text = "Open WSC4"
+        OpenWSC4.UseVisualStyleBackColor = True
+        ' 
+        ' OpenPortal
+        ' 
+        OpenPortal.Enabled = False
+        OpenPortal.Location = New Point(12, 375)
+        OpenPortal.Name = "OpenPortal"
+        OpenPortal.Size = New Size(153, 49)
+        OpenPortal.TabIndex = 17
+        OpenPortal.Text = "Open Portal"
+        OpenPortal.UseVisualStyleBackColor = True
+        ' 
+        ' SeparatorLabel
+        ' 
+        SeparatorLabel.AutoSize = True
+        SeparatorLabel.Location = New Point(12, 182)
+        SeparatorLabel.Name = "SeparatorLabel"
+        SeparatorLabel.Size = New Size(350, 15)
+        SeparatorLabel.TabIndex = 20
+        SeparatorLabel.Text = "---------------------------------------------------------------------"
         ' 
         ' IISAutomationTool
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(434, 468)
+        ClientSize = New Size(380, 462)
+        Controls.Add(SeparatorLabel)
+        Controls.Add(OpenWSC4)
+        Controls.Add(OpenPortal)
+        Controls.Add(OpenWSC4ErrorLogTail)
+        Controls.Add(OpenPortalErrorLogTail)
         Controls.Add(ErrorLabel)
         Controls.Add(OpenWSCLogs)
         Controls.Add(OpenPortalLogs)
@@ -211,7 +259,6 @@ Partial Class IISAutomationTool
         Controls.Add(RefreshPool)
         Controls.Add(UpdateConfiguration)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
-        Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
         Name = "IISAutomationTool"
         Text = "IIS Automation Tool"
@@ -234,5 +281,10 @@ Partial Class IISAutomationTool
     Friend WithEvents OpenPortalLogs As Button
     Friend WithEvents OpenWSCLogs As Button
     Friend WithEvents ErrorLabel As Label
+    Friend WithEvents OpenWSC4ErrorLogTail As Button
+    Friend WithEvents OpenPortalErrorLogTail As Button
+    Friend WithEvents OpenWSC4 As Button
+    Friend WithEvents OpenPortal As Button
+    Friend WithEvents SeparatorLabel As Label
 
 End Class

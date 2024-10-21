@@ -9,8 +9,8 @@ Public Class IISAutomationTool
     Public Sub New()
         InitializeComponent()
 
-        toolVersion = 1
-        Info.Text += "1.0"
+        toolVersion = 2
+        Info.Text += "1.1"
 
         Dim webClient As New System.Net.WebClient
         Dim result As String = webClient.DownloadString("https://raw.githubusercontent.com/txnello/IISAutomationTool/refs/heads/master/IISAutomationToolSettings/_settings.json")
@@ -125,21 +125,25 @@ Public Class IISAutomationTool
 
             ' save XML
             configuration.Save("C:\Windows\System32\inetsrv\config\applicationHost.config")
-            ErrorLabel.Text = ""
 
             OpenPortalLogs.Enabled = True
             OpenWSCLogs.Enabled = True
+
+            OpenPortal.Enabled = True
+            OpenWSC4.Enabled = True
+
+            OpenPortalErrorLogTail.Enabled = True
+            OpenWSC4ErrorLogTail.Enabled = True
         Catch ex As Exception
-            ErrorLabel.Text = "Error saving configuration."
+            MessageBox.Show("Error saving configuration.")
         End Try
     End Sub
 
     Private Sub RefreshPool_Click(sender As Object, e As EventArgs) Handles RefreshPool.Click
         Try
             System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() & "\..\..\..\refreshPool.bat")
-            ErrorLabel.Text = ""
         Catch ex As Exception
-            ErrorLabel.Text = "Cannot find batch file."
+            MessageBox.Show("Cannot find batch file.")
         End Try
     End Sub
 
@@ -150,27 +154,58 @@ Public Class IISAutomationTool
             My.Settings.Save()
 
             GetEnvironment.Enabled = True
-            ErrorLabel.Text = ""
         Else
-            ErrorLabel.Text = "Insert correct paths."
+            MessageBox.Show("Insert correct paths.")
         End If
     End Sub
 
     Private Sub OpenPortalLogs_Click(sender As Object, e As EventArgs) Handles OpenPortalLogs.Click
         Try
             Shell("explorer " + My.Settings.PortalPath + "\Logs", AppWinStyle.NormalFocus)
-            ErrorLabel.Text = ""
         Catch ex As Exception
-            ErrorLabel.Text = "Cannot open Portal logs for some reasons. Try later or pray your own god."
+            MessageBox.Show("Cannot open Portal logs for some reasons. Try later or pray your own god.")
         End Try
     End Sub
 
     Private Sub OpenWSCLogs_Click(sender As Object, e As EventArgs) Handles OpenWSCLogs.Click
         Try
             Shell("explorer " + My.Settings.WSC4Path + "\Logs", AppWinStyle.NormalFocus)
-            ErrorLabel.Text = ""
         Catch ex As Exception
-            ErrorLabel.Text = "Cannot open WSC4 logs for some reasons. Try later or pray your own god."
+            MessageBox.Show("Cannot open WSC4 logs for some reasons. Try later or pray your own god.")
+        End Try
+    End Sub
+
+    Private Sub OpenPowershell(scriptPath As String, pathParameter As String)
+        Dim startInfo As New ProcessStartInfo()
+        startInfo.FileName = "cmd.exe"
+        startInfo.Arguments = $"/c start powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""{scriptPath}"" -Path ""{pathParameter}"""
+        startInfo.UseShellExecute = False
+        startInfo.CreateNoWindow = False
+
+        Dim process As New Process()
+        process.StartInfo = startInfo
+        process.Start()
+    End Sub
+
+    Private Sub OpenPortalErrorLogTail_Click(sender As Object, e As EventArgs) Handles OpenPortalErrorLogTail.Click
+        Try
+            Dim combinedPath As String = Path.Combine(Directory.GetCurrentDirectory(), "..\..\..\LogTailIISAutomationTool.ps1")
+            Dim absolutePath As String = Path.GetFullPath(combinedPath)
+
+            OpenPowershell(absolutePath, My.Settings.PortalPath & "\Logs\error-log.txt")
+        Catch ex As Exception
+            MessageBox.Show("Cannot open Portal log tail for some reasons. Try later or pray your own god.")
+        End Try
+    End Sub
+
+    Private Sub OpenWSC4ErrorLogTail_Click(sender As Object, e As EventArgs) Handles OpenWSC4ErrorLogTail.Click
+        Try
+            Dim combinedPath As String = Path.Combine(Directory.GetCurrentDirectory(), "..\..\..\LogTailIISAutomationTool.ps1")
+            Dim absolutePath As String = Path.GetFullPath(combinedPath)
+
+            OpenPowershell(absolutePath, My.Settings.WSC4Path & "\Logs\error-log.txt")
+        Catch ex As Exception
+            MessageBox.Show("Cannot open WSC4 log tail for some reasons. Try later or pray your own god.")
         End Try
     End Sub
 End Class
