@@ -229,7 +229,7 @@ Partial Class IISAutomationTool
         SeparatorLabel.AutoSize = True
         SeparatorLabel.Location = New Point(12, 182)
         SeparatorLabel.Name = "SeparatorLabel"
-        SeparatorLabel.Size = New Size(350, 15)
+        SeparatorLabel.Size = New Size(352, 15)
         SeparatorLabel.TabIndex = 20
         SeparatorLabel.Text = "---------------------------------------------------------------------"
         ' 

@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net
+Imports System.Xml
 Imports Newtonsoft.Json
 
 Public Class IISAutomationTool
@@ -20,15 +21,7 @@ Public Class IISAutomationTool
             If json("updateVersion").value > toolVersion Then
                 If (MessageBox.Show("A new version (v" + json("updateExtendedVersion").ToString() + ") is now available. Do you want to download it?", "Visit", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) = DialogResult.Yes) Then
                     Dim updateUrl As String = json("updateUrl").ToString()
-                    If Not updateUrl.StartsWith("http://") And Not updateUrl.StartsWith("https://") Then
-                        updateUrl = "https://" & updateUrl
-                    End If
-
-                    Dim psi As New ProcessStartInfo()
-                    psi.FileName = updateUrl
-                    psi.UseShellExecute = True
-
-                    Process.Start(psi)
+                    LaunchUrl(updateUrl)
                 End If
             End If
 
@@ -42,6 +35,18 @@ Public Class IISAutomationTool
             SetPath.Enabled = True
             RefreshPool.Enabled = True
         End If
+    End Sub
+
+    Private Sub LaunchUrl(url As String)
+        If Not url.StartsWith("http://") And Not url.StartsWith("https://") Then
+            url = "https://" & url
+        End If
+
+        Dim psi As New ProcessStartInfo()
+        psi.FileName = url
+        psi.UseShellExecute = True
+
+        Process.Start(psi)
     End Sub
 
     Private Sub GetEnvironment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GetEnvironment.SelectedIndexChanged
@@ -207,5 +212,36 @@ Public Class IISAutomationTool
         Catch ex As Exception
             MessageBox.Show("Cannot open WSC4 log tail for some reasons. Try later or pray your own god.")
         End Try
+    End Sub
+
+    Public Sub OpenApplication(env As String)
+        Dim appName As String = "/PortalAuto"
+
+        If env = "wsc4" Then
+            appName = "/WSC4Auto/Web"
+        End If
+
+        Dim xmlDoc As New XmlDocument()
+        xmlDoc.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
+
+        Dim xpath As String = "//site/application[@path='/PortalAuto']/parent::site/bindings/binding"
+        Dim nodeList As XmlNodeList = xmlDoc.SelectNodes(xpath)
+
+        For Each node As XmlNode In nodeList
+            Dim protocol As String = node.Attributes("protocol").Value
+            Dim bindingInformation As String = node.Attributes("bindingInformation").Value
+            Dim port As String = bindingInformation.Split(":"c)(1)
+            Console.WriteLine($"Protocollo: {protocol}, Porta: {port}")
+
+            LaunchUrl(protocol & "://localhost:" & port & appName)
+        Next
+    End Sub
+
+    Private Sub OpenPortal_Click(sender As Object, e As EventArgs) Handles OpenPortal.Click
+        OpenApplication("portal")
+    End Sub
+
+    Private Sub OpenWSC4_Click(sender As Object, e As EventArgs) Handles OpenWSC4.Click
+        OpenApplication("wsc4")
     End Sub
 End Class
