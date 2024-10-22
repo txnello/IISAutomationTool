@@ -71,6 +71,7 @@ Public Class IISAutomationTool
         End If
 
         ' enable the other combo
+        GetProject.Text = ""
         GetProject.Enabled = True
     End Sub
 
@@ -131,6 +132,8 @@ Public Class IISAutomationTool
             ' save XML
             configuration.Save("C:\Windows\System32\inetsrv\config\applicationHost.config")
 
+            MessageBox.Show("Successfully updated!")
+
             OpenPortalLogs.Enabled = True
             OpenWSCLogs.Enabled = True
 
@@ -157,6 +160,8 @@ Public Class IISAutomationTool
             My.Settings.CRMPath = CRMPath.Text
             My.Settings.HDAPath = HDAPath.Text
             My.Settings.Save()
+
+            MessageBox.Show("Successfully set!")
 
             GetEnvironment.Enabled = True
         Else
@@ -218,7 +223,7 @@ Public Class IISAutomationTool
         Dim appName As String = "/PortalAuto"
 
         If env = "wsc4" Then
-            appName = "/WSC4Auto/Web"
+            appName = "/WSC4Auto/WSConnector.svc"
         End If
 
         Dim xmlDoc As New XmlDocument()
