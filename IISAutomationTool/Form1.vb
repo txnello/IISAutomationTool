@@ -19,28 +19,26 @@ Public Class IISAutomationTool
         Dim result As String = webClient.DownloadString("https://raw.githubusercontent.com/txnello/IISAutomationTool/refs/heads/master/IISAutomationToolSettings/_settings.json")
         Dim json = JsonConvert.DeserializeObject(result)
 
-        If json("programAvailability") Then
-            If json("updateVersion").value > toolVersion Then
-                ' alert new version
-                If (MessageBox.Show("A new version (v" + json("updateExtendedVersion").ToString() + ") is now available. Do you want to download it?", "Visit", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) = DialogResult.Yes) Then
-                    Dim updateUrl As String = json("updateUrl").ToString()
-                    LaunchUrl(updateUrl)
-                End If
+        If json("updateVersion").value > toolVersion Then
+            ' alert new version
+            If (MessageBox.Show("A new version (v" + json("updateExtendedVersion").ToString() + ") is now available. Do you want to download it?", "Visit", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) = DialogResult.Yes) Then
+                Dim updateUrl As String = json("updateUrl").ToString()
+                LaunchUrl(updateUrl)
             End If
-
-            ' check previous environments
-            GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.HDAPath.Count > 0
-
-            ' fill environment fields
-            CRMPath.Text = If(My.Settings.CRMPath, "")
-            HDAPath.Text = If(My.Settings.HDAPath, "")
-
-            ' enable commands
-            CRMPath.Enabled = True
-            HDAPath.Enabled = True
-            SetPath.Enabled = True
-            RefreshPool.Enabled = True
         End If
+
+        ' check previous environments
+        GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.HDAPath.Count > 0
+
+        ' fill environment fields
+        CRMPath.Text = If(My.Settings.CRMPath, "")
+        HDAPath.Text = If(My.Settings.HDAPath, "")
+
+        ' enable commands
+        CRMPath.Enabled = True
+        HDAPath.Enabled = True
+        SetPath.Enabled = True
+        RefreshPool.Enabled = True
     End Sub
 
     Private Sub LaunchUrl(url As String)
