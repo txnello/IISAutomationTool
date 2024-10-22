@@ -10,26 +10,32 @@ Public Class IISAutomationTool
     Public Sub New()
         InitializeComponent()
 
+        ' current version
         toolVersion = 2
         Info.Text += "1.1"
 
+        ' check availability
         Dim webClient As New System.Net.WebClient
         Dim result As String = webClient.DownloadString("https://raw.githubusercontent.com/txnello/IISAutomationTool/refs/heads/master/IISAutomationToolSettings/_settings.json")
         Dim json = JsonConvert.DeserializeObject(result)
 
         If json("programAvailability") Then
             If json("updateVersion").value > toolVersion Then
+                ' alert new version
                 If (MessageBox.Show("A new version (v" + json("updateExtendedVersion").ToString() + ") is now available. Do you want to download it?", "Visit", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) = DialogResult.Yes) Then
                     Dim updateUrl As String = json("updateUrl").ToString()
                     LaunchUrl(updateUrl)
                 End If
             End If
 
-            GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.CRMPath.Count > 0
+            ' check previous environments
+            GetEnvironment.Enabled = My.Settings.CRMPath.Count > 0 AndAlso My.Settings.HDAPath.Count > 0
 
+            ' fill environment fields
             CRMPath.Text = If(My.Settings.CRMPath, "")
             HDAPath.Text = If(My.Settings.HDAPath, "")
 
+            ' enable commands
             CRMPath.Enabled = True
             HDAPath.Enabled = True
             SetPath.Enabled = True
@@ -229,6 +235,7 @@ Public Class IISAutomationTool
         Dim xmlDoc As New XmlDocument()
         xmlDoc.Load("C:\Windows\System32\inetsrv\config\applicationHost.config")
 
+        ' find port and protocol
         Dim xpath As String = "//site/application[@path='/PortalAuto']/parent::site/bindings/binding"
         Dim nodeList As XmlNodeList = xmlDoc.SelectNodes(xpath)
 
