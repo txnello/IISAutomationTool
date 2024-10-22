@@ -22,6 +22,7 @@ Partial Class IISAutomationTool
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(IISAutomationTool))
         UpdateConfiguration = New Button()
         RefreshPool = New Button()
@@ -43,6 +44,7 @@ Partial Class IISAutomationTool
         OpenWSC4 = New Button()
         OpenPortal = New Button()
         SeparatorLabel = New Label()
+        NotifyIcon1 = New NotifyIcon(components)
         SuspendLayout()
         ' 
         ' UpdateConfiguration
@@ -233,6 +235,12 @@ Partial Class IISAutomationTool
         SeparatorLabel.TabIndex = 20
         SeparatorLabel.Text = "---------------------------------------------------------------------"
         ' 
+        ' NotifyIcon1
+        ' 
+        NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), Icon)
+        NotifyIcon1.Text = "IIS Automation Tool"
+        NotifyIcon1.Visible = True
+        ' 
         ' IISAutomationTool
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
@@ -286,5 +294,6 @@ Partial Class IISAutomationTool
     Friend WithEvents OpenWSC4 As Button
     Friend WithEvents OpenPortal As Button
     Friend WithEvents SeparatorLabel As Label
+    Friend WithEvents NotifyIcon1 As NotifyIcon
 
 End Class

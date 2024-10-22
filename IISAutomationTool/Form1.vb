@@ -249,4 +249,17 @@ Public Class IISAutomationTool
     Private Sub OpenWSC4_Click(sender As Object, e As EventArgs) Handles OpenWSC4.Click
         OpenApplication("wsc4")
     End Sub
+
+    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        If Me.WindowState = FormWindowState.Minimized Then
+            Me.ShowInTaskbar = False
+            NotifyIcon1.Visible = True
+        End If
+    End Sub
+
+    Private Sub NotifyIcon1_Click(sender As Object, e As System.EventArgs) Handles NotifyIcon1.Click
+        Me.WindowState = FormWindowState.Normal
+        Me.ShowInTaskbar = True
+        NotifyIcon1.Visible = False
+    End Sub
 End Class
