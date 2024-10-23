@@ -38,7 +38,6 @@ Partial Class IISAutomationTool
         Info = New Label()
         OpenPortalLogs = New Button()
         OpenWSCLogs = New Button()
-        ErrorLabel = New Label()
         OpenWSC4ErrorLogTail = New Button()
         OpenPortalErrorLogTail = New Button()
         OpenWSC4 = New Button()
@@ -179,13 +178,6 @@ Partial Class IISAutomationTool
         OpenWSCLogs.Text = "Open WSC4 Logs"
         OpenWSCLogs.UseVisualStyleBackColor = True
         ' 
-        ' ErrorLabel
-        ' 
-        ErrorLabel.Location = New Point(0, 0)
-        ErrorLabel.Name = "ErrorLabel"
-        ErrorLabel.Size = New Size(100, 23)
-        ErrorLabel.TabIndex = 19
-        ' 
         ' OpenWSC4ErrorLogTail
         ' 
         OpenWSC4ErrorLogTail.Enabled = False
@@ -243,7 +235,7 @@ Partial Class IISAutomationTool
         ' 
         ' IISAutomationTool
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(380, 462)
         Controls.Add(SeparatorLabel)
@@ -251,7 +243,6 @@ Partial Class IISAutomationTool
         Controls.Add(OpenPortal)
         Controls.Add(OpenWSC4ErrorLogTail)
         Controls.Add(OpenPortalErrorLogTail)
-        Controls.Add(ErrorLabel)
         Controls.Add(OpenWSCLogs)
         Controls.Add(OpenPortalLogs)
         Controls.Add(Info)
@@ -288,7 +279,6 @@ Partial Class IISAutomationTool
     Friend WithEvents Info As Label
     Friend WithEvents OpenPortalLogs As Button
     Friend WithEvents OpenWSCLogs As Button
-    Friend WithEvents ErrorLabel As Label
     Friend WithEvents OpenWSC4ErrorLogTail As Button
     Friend WithEvents OpenPortalErrorLogTail As Button
     Friend WithEvents OpenWSC4 As Button
