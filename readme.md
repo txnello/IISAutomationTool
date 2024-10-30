@@ -1,6 +1,6 @@
 # IIS Automation Tool
 
-### **→ <a href="https://drive.google.com/file/d/15C7XP8-kj-J2JI62GUeQtEi-yHSj86QF/view?usp=sharing" target="_blank">Clicca qui per scaricare l’ultima versione!</a> ←**
+### **→ [Clicca qui per scaricare l’ultima versione!](https://drive.google.com/file/d/15C7XP8-kj-J2JI62GUeQtEi-yHSj86QF/view?usp=sharing) ←**
 
 ## Indice
 
