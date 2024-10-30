@@ -1,10 +1,15 @@
 # IIS Automation Tool
 
----
+### **→ <a href="https://drive.google.com/file/d/15C7XP8-kj-J2JI62GUeQtEi-yHSj86QF/view?usp=sharing" target="_blank">Clicca qui per scaricare l’ultima versione!</a> ←**
 
-### **→ [Clicca qui per scaricare l’ultima versione!](https://drive.google.com/file/d/15C7XP8-kj-J2JI62GUeQtEi-yHSj86QF/view?usp=sharing) ←**
+## Indice
 
-## Cose da fare
+[Prima di scaricare](#prima-di-scaricare)<br>
+[Versione 1.0](#versione-10)<br>
+[Versione 1.1](#versione-11)<br>
+[Versione 1.2](#versione-12)
+
+## Prima di scaricare
 
 - Aprire il programma sempre con i permessi di **amministratore** (dalla versione 1.1 dovrebbe già aprirsi in modalità amministratore, al massimo controllare che sia effettivamente così)
 - Creare 2 workspace: uno per il CRM e uno per HDA
@@ -12,7 +17,9 @@
 
 ![image](https://github.com/user-attachments/assets/6c59461b-439b-48a5-bb6e-b66a16692eca)
 
-## Guida (v1.0)
+# Guida all'utilizzo e alle versioni
+
+## Versione 1.0
 
 Scaricare il pacchetto e lanciare il programma.
 
